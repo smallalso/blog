@@ -20,6 +20,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# lock
+*.lock
+
 # jetbrains setting folder
 .idea/
 
@@ -31,4 +34,3 @@ pnpm-debug.log*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-*.lock
