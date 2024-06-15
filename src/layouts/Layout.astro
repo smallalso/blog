@@ -1,0 +1,35 @@
+---
+import 'global.css';
+import { BLOG_INFO } from 'config';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+interface Props {
+	title?: string;
+}
+
+const { title = BLOG_INFO.title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="antialiased max-w-3xl flex flex-col md:flex-row  lg:mx-auto">
+		<section class="flex-auto flex flex-col px-2 mx-4 mt-8">
+			<Header/>
+			<main class="min-w-0 mt-2 md:px-0"
+						style="min-height: calc(100vh - 10.2rem);">
+				<slot />
+			</main>
+			<Footer/>
+		</section>
+	</body>
+</html>
+

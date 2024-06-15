@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '@components/Card.astro';
+import { getBlogItems } from '@utils/blog';
+
+
+const dataSource = await getBlogItems()
+---
+
+<Layout>
+	<div>
+		<h2 class="text-2xl mt-4 font-bold">
+			你好，我是佳亦，又称小亦，英文smallalso。
+		</h2>
+		<p class="pt-8 pb-4">
+			目前是一名web工程师，在这里记录一些工作、学习上的所思所感！
+		</p>
+		<div class="mt-12">
+			<h3 class="text-xl">文章 / ESSAYS</h3>
+			<ul class="mt-6">
+				{
+					dataSource.map(({ data, slug }) => (
+							<Card href={`/blog/${slug}/`} frontmatter={data} />
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</Layout>
+

@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { BLOG_INFO } from 'config'
+import Layout from './Layout.astro';
+import Card from '@components/Card.astro';
+
+export interface Props {
+    currentPage?: number;
+    totalPages?: number;
+    dataSource: Array<CollectionEntry<'blog'>>;
+}
+
+const { currentPage, totalPages, dataSource } = Astro.props;
+---
+
+<Layout title={`博客 | ${BLOG_INFO.title}`}>
+  <!-- <ul>
+    {
+      dataSource.map(({ data, slug }) => (
+          <Card href={`/blog/${slug}/`} frontmatter={data} />
+      ))
+    }
+  </ul> -->
+  <p>博客迁移改版中......</p>
+</Layout>

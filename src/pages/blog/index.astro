@@ -1,0 +1,9 @@
+---
+
+import Blog from '@layouts/Blog.astro';
+import { getBlogItems } from '@utils/blog';
+
+const items = await getBlogItems()
+---
+
+<Blog dataSource={items} />

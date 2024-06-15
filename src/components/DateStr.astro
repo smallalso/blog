@@ -1,0 +1,9 @@
+---
+import { getDateStr } from '@utils/helper';
+const { date } = Astro.props;
+const dateStr = getDateStr(date)
+---
+
+<p>
+  {dateStr}
+</p>
