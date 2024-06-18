@@ -2,10 +2,10 @@
  * 获取当前时间明细
  * @returns TimerInfoProps
  */
-export function getTimeInfo<TimerInfoProps>(time = Date.now()) {
+export function getTimeInfo<TimerInfoProps>(time = new Date()) {
   const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
-  const d = new Date(time);
+  const d = time ? time : new Date();
   const year = d.getFullYear();
   const month = d.getMonth();
   const date = d.getDate();
@@ -25,7 +25,7 @@ export function getTimeInfo<TimerInfoProps>(time = Date.now()) {
   }
 }
 
-export function getDateStr(time: number | undefined) {
+export function getDateStr(time: Date) {
   const {year, month, date} = getTimeInfo(time)
   return `${year}-${month}-${date}`
 }
