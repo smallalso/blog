@@ -91,4 +91,47 @@ Function.prototype.call = function(context, ...args) {
 
 ## 原型继承
 
+![prototype](/img/prototype.jpg)
+
+ES6 中 class 本质也是基于原型链。
+
 ## 模块（esm）
+
+模块化是开发大型应用所必不可少的，官方提供的标准模块称为 ESM (EcmaScript Modular)。
+
+ESM 的执行过程是分为三个阶段，分别为构建（constration）、实例话（instantiation）、求值（evaluation）运行code。
+
+- **构建（constration）**
+
+  1. 找到模块文件的下载地址。
+  2. 通过 url 加载文件获得模块内容。
+  3. 解析成模块记录（modular reacord）并缓存。
+
+- **模块实例化（instantiation）**
+
+  这个阶段类似于 Function 执行中的 creation 阶段。
+
+  1. 创建模块记录（上下文）。
+  2. 为模块中的变量、函数分配存储空间。
+  3. 找出 export 的变量和内存空间地址，将导出的变量绑定到对应内存空间地址，找到 import 的变量和内存空间地址，将 import 的变量绑定到对应内存空间地址。
+
+  **注意：** javascript 引擎采用深度优先顺序遍历模块关系树中的每个模块进行实例化。
+
+- **求值（evaluation）**
+
+  js 引擎按深度优先后序遍历模块树，执行模块顶层代码。
+
+  **注意：** 每个模块只会运行一次，会通过 modular map 缓存模块顶层代码的执行结果。
+
+## ESM 与 common.js 的不同
+
+ESM 与 Common.js 以下两点不同的实现基础是 esm 模块的执行异步分阶段，没有这一点，是不可能实现 export 和 import 指向同一个内存空间地址。
+
+1. common.js 记载，实例化、求值不是异步分阶段的，所以 common.js 可以在运行时一次执行，同理，他可以接受动态url。
+2. 另外一个重要的不同是 esm 中， exports 和 import 指向的是同一个内存地址，而 common.js 对于非应用类型的数据导入的是值的copy。
+
+
+## 其他
+
+Javascript 中新特性：Promise、async\await、Set、Map、weakSet、weakMap、Iterator、Reflect、Proxy等也是需要过一遍的，基础不牢，地动山摇。
+
